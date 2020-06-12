@@ -9,6 +9,7 @@ esp-idf-bindgen = { path = "../esp-idf-bindgen" }
 embedded-hal = { version = "0.2", features = ["unproven"] }
 static_assertions = "1"
 macaddr = "1"
+esp32 = { version = "0.3.0" }
 
 [features]
 default = []

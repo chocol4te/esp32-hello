@@ -36,7 +36,7 @@ if [[ "${chip}" = 'esp32' ]]; then
   bootloader_offset=0x1000
 fi
 
-esptool.py --chip "${chip}" --port "${serial_port}" --baud 115200 --before default_reset --after hard_reset write_flash \
+esptool.py --chip "${chip}" --port "${serial_port}" --baud 921600 --before default_reset --after hard_reset write_flash \
   -z --flash_mode dio \
   --flash_freq 80m \
   --flash_size detect \
