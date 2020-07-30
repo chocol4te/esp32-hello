@@ -44,7 +44,8 @@ while (( ${#@} )); do
   shift
 done
 
-SERIAL_PORT="$(find /dev -name 'tty.usbserial-*' 2>/dev/null | head -n 1 || true)"
+#SERIAL_PORT="$(find /dev -name 'tty.usbserial-*' 2>/dev/null | head -n 1 || true)"
+SERIAL_PORT=/dev/ttyUSB0
 
 TARGET="xtensa-${CHIP}-none-elf"
 
@@ -76,7 +77,7 @@ if [[ -z "${SERIAL_PORT}" ]]; then
 fi
 
 esptool() {
-  "${IDF_PATH}/components/esptool_py/esptool/esptool.py" --chip "${CHIP}" --port "${SERIAL_PORT}" ${FLASH_BAUDRATE:+--baud "${FLASH_BAUDRATE}"} "${@}" | \
+  python3 "${IDF_PATH}/components/esptool_py/esptool/esptool.py" --chip "${CHIP}" --port "${SERIAL_PORT}" ${FLASH_BAUDRATE:+--baud "${FLASH_BAUDRATE}"} "${@}" | \
     grep -E -v 'esptool.py|Serial port|Changing baud rate|Changed.|Uploading stub|Running stub|Stub running|Configuring flash size|Leaving'
 }
 
@@ -130,4 +131,4 @@ else
     "${APPLICATION_OFFSET}" "${APPLICATION_BINARY}"
 fi
 
-python -m serial.tools.miniterm --raw --exit-char=3 --rts=0 --dtr=0 "${SERIAL_PORT}" "${MONITOR_BAUDRATE}"
+python3 -m serial.tools.miniterm --raw --exit-char=3 --rts=0 --dtr=0 "${SERIAL_PORT}" "${MONITOR_BAUDRATE}"

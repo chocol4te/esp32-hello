@@ -12,8 +12,9 @@ extern crate alloc;
 mod esp_error;
 pub use esp_error::EspError;
 
-pub mod interface;
 mod heap;
+pub mod interface;
 pub use heap::Heap;
-pub mod wifi;
+pub mod i2c;
 pub mod nvs;
+pub mod wifi;

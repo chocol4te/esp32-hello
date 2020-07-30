@@ -7,7 +7,7 @@ edition = "2018"
 dnsparse = "0.1"
 esp-idf-bindgen = "0.1"
 esp-idf-hal = { path = "../esp-idf-hal" }
-esp32-hal = { version = "0.1",  default-features = false }
+esp32-hal = { git = "https://github.com/esp-rs/esp32-hal",  default-features = false }
 embedded-hal = "0.2"
 bitflags = "1"
 libc = "0.2"
@@ -15,6 +15,12 @@ httparse = "1"
 url = "2"
 futures = "0.3"
 macaddr = "1"
+
+mqttrs = { version = "0.3", default-features = false }
+bytes = "0.5.5"
+ssd1306 = "0.3.1"
+embedded-graphics = "0.6.2"
+sgp30 = "0.2.1"
 
 [build-dependencies]
 jobserver = "0.1"
